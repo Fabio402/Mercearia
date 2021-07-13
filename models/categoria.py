@@ -1,10 +1,6 @@
 class Categoria:
-    def __init__(self, nome, last):
+    def __init__(self, nome, serial):
         self.nome = nome
-        self.serial = last+1
+        self.serial = serial
 
 
-class Produto:
-    def __init__(self, nome, last, qtd, precoVenda, precoCusto):
-        self.nome = nome
-        self.serial = last+1
