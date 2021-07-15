@@ -1,5 +1,5 @@
 class Pessoa:
-    def __init__(self,id, nome, cpf, rg, telefone, celular, email):
+    def __init__(self, id, nome, cpf, rg, telefone, celular, email):
         self.id = id
         self.nome = nome
         self.cpf = cpf
@@ -16,10 +16,18 @@ class Endereco:
         self.bairro = bairro
         self.cidade = cidade
         self.uf = uf
-        
-class Cliente(Pessoa, Endereco):
-    def __init__(self,id, nome, cpf, rg, telefone, celular, emailrua, numero, bairro, cidade, uf):
-        self.id
-        self.pessoaId
-        super(Cliente, self).__init__(id, nome, cpf, rg, telefone, celular, email)
-        super(Cliente, self).__init__()
+        self.ativo = True
+
+class Cliente(Pessoa):
+    def __init__(self, cliId, pessoaId, nome, cpf, rg, telefone, celular, email):
+        self.id = cliId
+        self.pessoaId = pessoaId
+        self.ativo = True
+        super(Cliente, self).__init__(pessoaId, nome, cpf, rg, telefone, celular, email)
+
+class Funcionario(Pessoa):
+    def __init__(self, funcId, pessoaId, nome, cpf, rg, telefone, celular, email):
+        self.id = funcId
+        self.pessoaId = pessoaId
+        self.ativo = True
+        super(Funcionario, self).__init__(pessoaId, nome, cpf, rg, telefone, celular, email)

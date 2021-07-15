@@ -6,4 +6,4 @@ class Produto:
         self.venda = precoVenda
         self.custo = precoCusto
         self.categoria = categoria
-
+        self.ativo = True
