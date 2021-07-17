@@ -4,7 +4,7 @@ class DaoPessoas:
     @classmethod
     def save(cls,id,nome,cpf,rg,telefone,celular,email):
         with open('data/pessoas.txt', 'a') as file:
-            file.writelines(id +'|'+ nome +'|'+ cpf +'|'+ rg +'|'+ telefone +'|'+ celular +'|'+ email)
+            file.writelines(str(id) +'|'+ nome +'|'+ cpf +'|'+ rg +'|'+ telefone +'|'+ celular +'|'+ email)
             file.writelines('\n')
 
     @classmethod
@@ -24,7 +24,7 @@ class DaoFuncionario:
                 funcionario.ativo = '1'
             else:
                 funcionario.ativo = '0'
-            file.writelines(funcionario.funcId + '|' + funcionario.pessoaId + '|' + funcionario.ativo)
+            file.writelines(str(funcionario.funcId) + '|' + str(funcionario.pessoaId) + '|' + funcionario.ativo)
             file.writelines('\n')
             DaoPessoas.save(funcionario.pessoaId, funcionario.nome, funcionario.cpf, funcionario.rg, funcionario.telefone, funcionario.celular, funcionario.email)
 
@@ -40,7 +40,7 @@ class DaoFuncionario:
             for i in aux:
                 for j in pessoas:
                     if(i[1] == j[0]):
-                        funcionario = Funcionario(i[0],i[1],j[1],j[2],j[3],j[4], j[5], j[6], i[2])
+                        funcionario = Funcionario(int(i[0]), int(i[1]), j[1], j[2], j[3], j[4], j[5], j[6], i[2])
                         cls.funcionarios.append(funcionario)
 
         return cls.funcionarios
@@ -53,7 +53,7 @@ class DaoCliente:
                 cliente.ativo = '1'
             else:
                 cliente.ativo = '0'
-            file.writelines(cliente.cliId +'|'+ cliente.pessoaId +'|'+ cliente.ativo)
+            file.writelines(str(cliente.cliId) +'|'+ str(cliente.pessoaId) +'|'+ cliente.ativo)
             file.writelines('\n')
             DaoPessoas.save(cliente.pessoaId, cliente.nome, cliente.cpf, cliente.rg, cliente.telefone, cliente.celular, cliente.email)
 
@@ -69,16 +69,6 @@ class DaoCliente:
             for i in aux:
                 for j in pessoas:
                     if(i[1] == j[0]):
-                        cliente = Cliente(i[0],i[1], j[1],j[2],j[3],j[4],j[5],j[6],i[2])
+                        cliente = Cliente(int(i[0]),int(i[1]), j[1],j[2],j[3],j[4],j[5],j[6],i[2])
                         cls.clientes.append(cliente)
         return cls.clientes
-
-
-clientes = DaoCliente.read()
-funcionarios = DaoFuncionario.read()
-
-for cli in clientes:
-    print(cli.cliId, cli.id, cli.nome)
-
-for func in funcionarios:
-    print(func.funcId, func.id, func.nome)

@@ -17,15 +17,7 @@ class DaoFornecedores:
             aux = list(map(lambda data: data.split('|'),aux))
             cls.fornecedores = []
             for i in aux:
-                fornecedor = Fornecedores(i[0], i[1], i[2], i[4], i[3], i[5])
+                fornecedor = Fornecedores(int(i[0]), i[1], i[2], i[4], i[3], i[5])
                 cls.fornecedores.append(fornecedor)
 
         return cls.fornecedores
-
-#fornecedor = Fornecedores('0', 'frutaria', '123', 'frutas', '1111')
-#DaoFornecedores.save(fornecedor)
-
-fornecedores = DaoFornecedores.read()
-
-for forn in fornecedores:
-    print(forn.id, forn.nome)

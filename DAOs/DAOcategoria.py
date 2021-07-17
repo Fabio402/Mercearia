@@ -22,8 +22,3 @@ class DaoCategoria:
                 cls.categorias.append(categoria)
 
         return cls.categorias
-
-
-categorias = DaoCategoria.read()
-for cat in categorias:
-    print(cat.nome, cat.serial, cat.ativo)

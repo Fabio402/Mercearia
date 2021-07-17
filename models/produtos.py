@@ -1,9 +1,15 @@
 class Produto:
-    def __init__(self, nome, serial, qtd, precoVenda, precoCusto, categoria):
+    def __init__(self, nome, id, qtd, precoVenda, precoCusto, categoria, *ativo):
         self.nome = nome
-        self.serial = serial
+        self.prodId = id
         self.qtd = qtd
         self.venda = precoVenda
         self.custo = precoCusto
         self.categoria = categoria
-        self.ativo = True
+        if len(ativo) == 0:
+            self.ativo = True
+        else:
+            if ativo[0] == '1':
+                self.ativo = True
+            else:
+                self.ativo = False

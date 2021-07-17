@@ -9,5 +9,3 @@ class Categoria:
                 self.ativo = True
             else:
                 self.ativo = False
-
-
