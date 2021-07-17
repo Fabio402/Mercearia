@@ -16,18 +16,29 @@ class Endereco:
         self.bairro = bairro
         self.cidade = cidade
         self.uf = uf
-        self.ativo = True
 
 class Cliente(Pessoa):
-    def __init__(self, cliId, pessoaId, nome, cpf, rg, telefone, celular, email):
-        self.id = cliId
+    def __init__(self, cliId, pessoaId, nome, cpf, rg, telefone, celular, email, *ativo):
+        self.cliId = cliId
         self.pessoaId = pessoaId
-        self.ativo = True
+        if len(ativo) == 0:
+            self.ativo = True
+        else:
+            if ativo[0] == '1':
+                self.ativo = True
+            else:
+                self.ativo = False
         super(Cliente, self).__init__(pessoaId, nome, cpf, rg, telefone, celular, email)
 
 class Funcionario(Pessoa):
-    def __init__(self, funcId, pessoaId, nome, cpf, rg, telefone, celular, email):
-        self.id = funcId
+    def __init__(self, funcId, pessoaId, nome, cpf, rg, telefone, celular, email, *ativo):
+        self.funcId = funcId
         self.pessoaId = pessoaId
-        self.ativo = True
+        if len(ativo) == 0:
+            self.ativo = True
+        else:
+            if ativo[0] == '1':
+                self.ativo = True
+            else:
+                self.ativo = False
         super(Funcionario, self).__init__(pessoaId, nome, cpf, rg, telefone, celular, email)

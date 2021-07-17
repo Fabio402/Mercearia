@@ -2,38 +2,83 @@ from models.pessoas import *
 
 class DaoPessoas:
     @classmethod
-    def salvar(cls,id,nome,cpf,rg,telefone,celular,email):
+    def save(cls,id,nome,cpf,rg,telefone,celular,email):
         with open('data/pessoas.txt', 'a') as file:
             file.writelines(id +'|'+ nome +'|'+ cpf +'|'+ rg +'|'+ telefone +'|'+ celular +'|'+ email)
+            file.writelines('\n')
 
     @classmethod
-    def ler(cls):
+    def read(cls):
         with open('data/pessoas.txt', 'r') as file:
-            cls.pessoas = file.readlines()
+            aux = file.readlines()
+            aux = list(map(lambda data: data.replace('\n', ''), aux))
+            cls.pessoas = list(map(lambda data: data.split('|'), aux))
+
         return cls.pessoas
 
 class DaoFuncionario:
     @classmethod
-    def salvar(cls, funcionario: Funcionario):
+    def save(cls, funcionario: Funcionario):
         with open('data/funcionarios.txt', 'a') as file:
-            file.writelines(funcionario.id + '|' + funcionario.pessoaId + '|' + funcionario.ativo)
-            DaoPessoas.salvar(funcionario.pessoaId,funcionario.nome,funcionario.cpf,funcionario.rg,funcionario.telefone,funcionario.celular,funcionario.email)
+            if funcionario.ativo == True:
+                funcionario.ativo = '1'
+            else:
+                funcionario.ativo = '0'
+            file.writelines(funcionario.funcId + '|' + funcionario.pessoaId + '|' + funcionario.ativo)
+            file.writelines('\n')
+            DaoPessoas.save(funcionario.pessoaId, funcionario.nome, funcionario.cpf, funcionario.rg, funcionario.telefone, funcionario.celular, funcionario.email)
 
     @classmethod
-    def ler(cls):
+    def read(cls):
         with open('data/funcionarios.txt', 'r') as file:
-            cls.funcionarios = file.readlines()
+            aux = file.readlines()
+            aux = list(map(lambda data: data.replace('\n',''), aux))
+            aux = list(map(lambda data: data.split('|'), aux))
+            pessoas = DaoPessoas.read()
+
+            cls.funcionarios = []
+            for i in aux:
+                for j in pessoas:
+                    if(i[1] == j[0]):
+                        funcionario = Funcionario(i[0],i[1],j[1],j[2],j[3],j[4], j[5], j[6], i[2])
+                        cls.funcionarios.append(funcionario)
+
         return cls.funcionarios
 
 class DaoCliente:
     @classmethod
-    def salvar(cls, cliente: Cliente):
+    def save(cls, cliente: Cliente):
         with open('data/clientes.txt', 'a') as file:
-            file.writelines(cliente.id +'|'+ cliente.pessoaId +'|'+ cliente.ativo)
-            DaoPessoas.salvar(cliente.pessoaId, cliente.mome, cliente.cpf, cliente.rg, cliente.telefone, cliente.celular, cliente.email)
+            if cliente.ativo == True:
+                cliente.ativo = '1'
+            else:
+                cliente.ativo = '0'
+            file.writelines(cliente.cliId +'|'+ cliente.pessoaId +'|'+ cliente.ativo)
+            file.writelines('\n')
+            DaoPessoas.save(cliente.pessoaId, cliente.nome, cliente.cpf, cliente.rg, cliente.telefone, cliente.celular, cliente.email)
 
     @classmethod
-    def ler(cls):
-        with open('data/cliente.txt','r') as file:
-            cls.clientes = file.readlines()
+    def read(cls):
+        with open('data/clientes.txt','r') as file:
+            aux = file.readlines()
+            aux = list(map(lambda data: data.replace('\n',''), aux))
+            aux = list(map(lambda data: data.split('|'), aux))
+            pessoas = DaoPessoas.read()
+
+            cls.clientes = []
+            for i in aux:
+                for j in pessoas:
+                    if(i[1] == j[0]):
+                        cliente = Cliente(i[0],i[1], j[1],j[2],j[3],j[4],j[5],j[6],i[2])
+                        cls.clientes.append(cliente)
         return cls.clientes
+
+
+clientes = DaoCliente.read()
+funcionarios = DaoFuncionario.read()
+
+for cli in clientes:
+    print(cli.cliId, cli.id, cli.nome)
+
+for func in funcionarios:
+    print(func.funcId, func.id, func.nome)
