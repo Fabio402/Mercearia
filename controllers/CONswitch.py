@@ -1,0 +1,122 @@
+class Controller:
+    @classmethod
+    def switch(cls, opcao):
+        try:
+            op = int(opcao)
+            if op == 1:
+                while op2 != 0:
+                    op2 = input('1- Produtos\n'
+                                '2- Categorias\n'
+                                '3- Fornecedores\n'
+                                '0- Voltar\n')
+
+                    op3 = input('1- Cadastrar\n'
+                                '2- Alterar\n'
+                                '3- Remover\n'
+                                '0- Voltar\n')
+
+                    if op2 == '1' and op3 == '1':
+                        ViewProdutos.add()
+                    elif op2 == '1' and op3 == '2':
+                        ViewProdutos.alter()
+                    elif op2 == '1' and op3 == '3':
+                        ViewProdutos.delete()
+                    elif op2 == '2' and op3 == '1':
+                        ViewCategorias.add()
+                    elif op2 == '2' and op3 == '2':
+                        ViewCategorias.alter()
+                    elif op2 == '2' and op3 == '3':
+                        ViewCategorias.delete()
+                    elif op2 == '3' and op3 == '1':
+                        ViewFornecedores.add()
+                    elif op2 == '3' and op3 == '2':
+                        ViewFornecedores.alter()
+                    elif op2 == '3' and op3 == '3':
+                        ViewFornecedores.delete()
+                    elif op2 == '0' or op3 == '0':
+                        break
+                    else:
+                        print('Opção inválida\n')
+
+            elif op == 2:
+                while op2 != 0:
+                    op2 = input('1- Cadastrar\n'
+                                '2- Alterar\n'
+                                '3- Remover\n'
+                                '0- Voltar\n')
+                    if op2 == '1':
+                        ViewVendas.add()
+                    elif op2 == '2':
+                        ViewVendas.alter()
+                    elif op2 == '3':
+                        ViewVendas.delete()
+                    elif op2 == '0':
+                        continue
+                    else:
+                        print('Opção inválida!\n')
+
+            elif op == 3:
+                while op2 != '0':
+                    op2 = input('1- Cadastrar\n'
+                                '2- Alterar\n'
+                                '3- Remover\n'
+                                '0- Voltar\n')
+                if op2 = '1':
+                    ViewClientes.add()
+                elif op2 = '2':
+                    ViewClientes.alter()
+                elif op2 == '3':
+                    ViewClientes.delete()
+                elif op2 == '0':
+                    continue
+                else:
+                    print('Opção inválida!\n')
+
+            elif op == 4:
+                while op2 != '0':
+                    op2 = input('1- Cadastrar\n'
+                                '2- Alterar\n'
+                                '3- Remover\n'
+                                '0- Voltar\n')
+                    if op2 = '1':
+                        ViewFuncionarios.add()
+                    elif op2 = '2':
+                        ViewFuncionarios.alter()
+                    elif op2 == '3':
+                        ViewFuncionarios.delete()
+                    elif op2 == '0':
+                        continue
+                    else:
+                        print('Opção inválida!\n')
+
+            elif op == 5:
+                while op2 != '0':
+                    op2 = input('1- Relatótio geral de vendas\n'
+                                '2- Relatório por data\n'
+                                '3- Relatório de produtos mais vendidos\n'
+                                '4- Relatório de clientes que mais compram\n'
+                                '0- Voltar')
+                    if op2 == '1':
+                        ViewRelatorios.geral()
+                    elif op2 == '2':
+                        ViewRelatorios.data()
+                    elif op2 == '3':
+                        ViewRelatorios.maisVendidos()
+                    elif op2 == '4':
+                        ViewRelatorios.clientes()
+                    elif op == '0':
+                        continue
+                    else:
+                        print('Opção inválida!\n')
+
+            elif op == 0:
+                return '0'
+
+            else:
+                print('Opção inválida! Por favor tente novamente\n')
+                return op
+
+        except:
+            print('Digite um numero inteiro que represente a opção desejada')
+            return op
+

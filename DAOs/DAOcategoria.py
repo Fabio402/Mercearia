@@ -11,6 +11,20 @@ class DaoCategoria:
             file.writelines(str(categoria.serial) +'|'+ categoria.nome +'|'+ categoria.ativo +'\n')
 
     @classmethod
+    def alter(cls, alterId, alteracao: Categoria):
+        categorias = DaoCategoria.read()
+        categoria = list(filter(lambda data: data.serial == alterId, categorias))
+
+        if len(categoria) != 0:
+            cat = list(map(lambda data: categoria(alteracao) if(data.serial == alterId) else(data), categorias))
+        else:
+            return 'A categoria que deseja alterar não existe'
+
+        with open('data/categorias.txt', 'w') as file:
+            for i in cat:
+                file.writelines(str(i.serial) +'|'+ i.nome +'|'+ i.ativo +'\n')
+
+    @classmethod
     def read(cls):
         with open('data/categorias.txt', 'r') as file:
             aux = file.readlines()
