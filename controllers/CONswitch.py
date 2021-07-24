@@ -1,3 +1,9 @@
+from controllers.CONprodutos import *
+from controllers.CONvendas import *
+from controllers.CONpessoas import *
+from controllers.CONcategorias import *
+from controllers.CONfornecedores import *
+from controllers.CONrelatorios import *
 class Controller:
     @classmethod
     def switch(cls, opcao):
@@ -16,23 +22,23 @@ class Controller:
                                 '0- Voltar\n')
 
                     if op2 == '1' and op3 == '1':
-                        ViewProdutos.add()
+                        ConProdutos.add()
                     elif op2 == '1' and op3 == '2':
-                        ViewProdutos.alter()
+                        ConProdutos.alter()
                     elif op2 == '1' and op3 == '3':
-                        ViewProdutos.delete()
+                        ConProdutos.delete()
                     elif op2 == '2' and op3 == '1':
-                        ViewCategorias.add()
+                        ConCategorias.add()
                     elif op2 == '2' and op3 == '2':
-                        ViewCategorias.alter()
+                        ConCategorias.alter()
                     elif op2 == '2' and op3 == '3':
-                        ViewCategorias.delete()
+                        ConCategorias.delete()
                     elif op2 == '3' and op3 == '1':
-                        ViewFornecedores.add()
+                        ConFornecedores.add()
                     elif op2 == '3' and op3 == '2':
-                        ViewFornecedores.alter()
+                        ConFornecedores.alter()
                     elif op2 == '3' and op3 == '3':
-                        ViewFornecedores.delete()
+                        ConFornecedores.delete()
                     elif op2 == '0' or op3 == '0':
                         break
                     else:
@@ -45,11 +51,11 @@ class Controller:
                                 '3- Remover\n'
                                 '0- Voltar\n')
                     if op2 == '1':
-                        ViewVendas.add()
+                        ConVendas.add()
                     elif op2 == '2':
-                        ViewVendas.alter()
+                        ConVendas.alter()
                     elif op2 == '3':
-                        ViewVendas.delete()
+                        ConVendas.delete()
                     elif op2 == '0':
                         continue
                     else:
@@ -61,14 +67,14 @@ class Controller:
                                 '2- Alterar\n'
                                 '3- Remover\n'
                                 '0- Voltar\n')
-                if op2 = '1':
-                    ViewClientes.add()
-                elif op2 = '2':
-                    ViewClientes.alter()
-                elif op2 == '3':
-                    ViewClientes.delete()
-                elif op2 == '0':
-                    continue
+                    if op2 == '1':
+                        ConClientes.add()
+                    elif op2 == '2':
+                        ConClientes.alter()
+                    elif op2 == '3':
+                        ConClientes.delete()
+                    elif op2 == '0':
+                        continue
                 else:
                     print('Opção inválida!\n')
 
@@ -78,12 +84,12 @@ class Controller:
                                 '2- Alterar\n'
                                 '3- Remover\n'
                                 '0- Voltar\n')
-                    if op2 = '1':
-                        ViewFuncionarios.add()
-                    elif op2 = '2':
-                        ViewFuncionarios.alter()
+                    if op2 == '1':
+                        ConFuncionarios.add()
+                    elif op2 == '2':
+                        ConFuncionarios.alter()
                     elif op2 == '3':
-                        ViewFuncionarios.delete()
+                        ConFuncionarios.delete()
                     elif op2 == '0':
                         continue
                     else:
@@ -97,26 +103,24 @@ class Controller:
                                 '4- Relatório de clientes que mais compram\n'
                                 '0- Voltar')
                     if op2 == '1':
-                        ViewRelatorios.geral()
+                        ConRelatorios.geral()
                     elif op2 == '2':
-                        ViewRelatorios.data()
+                        ConRelatorios.data()
                     elif op2 == '3':
-                        ViewRelatorios.maisVendidos()
+                        ConRelatorios.maisVendidos()
                     elif op2 == '4':
-                        ViewRelatorios.clientes()
+                        ConRelatorios.clientes()
                     elif op == '0':
                         continue
                     else:
                         print('Opção inválida!\n')
 
             elif op == 0:
-                return '0'
+                print('Até logo')
 
             else:
                 print('Opção inválida! Por favor tente novamente\n')
-                return op
 
         except:
             print('Digite um numero inteiro que represente a opção desejada')
-            return op
 
