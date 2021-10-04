@@ -1,14 +1,17 @@
 from controllers.CONprodutos import *
+from views.viewProdutos import *
 from controllers.CONvendas import *
 from controllers.CONpessoas import *
 from controllers.CONcategorias import *
 from controllers.CONfornecedores import *
 from controllers.CONrelatorios import *
+
 class Controller:
     @classmethod
     def switch(cls, opcao):
         try:
             op = int(opcao)
+            op2 = 500
             if op == 1:
                 while op2 != 0:
                     op2 = input('1- Produtos\n'
@@ -22,23 +25,23 @@ class Controller:
                                 '0- Voltar\n')
 
                     if op2 == '1' and op3 == '1':
-                        ConProdutos.add()
+                        ViewProdutos.add()
                     elif op2 == '1' and op3 == '2':
-                        ConProdutos.alter()
+                        ViewProdutos.alter()
                     elif op2 == '1' and op3 == '3':
-                        ConProdutos.delete()
+                        ViewProdutos.delete()
                     elif op2 == '2' and op3 == '1':
-                        ConCategorias.add()
+                        ViewCategorias.add()
                     elif op2 == '2' and op3 == '2':
-                        ConCategorias.alter()
+                        ViewCategorias.alter()
                     elif op2 == '2' and op3 == '3':
-                        ConCategorias.delete()
+                        ViewCategorias.delete()
                     elif op2 == '3' and op3 == '1':
-                        ConFornecedores.add()
+                        ViewFornecedores.add()
                     elif op2 == '3' and op3 == '2':
-                        ConFornecedores.alter()
+                        ViewFornecedores.alter()
                     elif op2 == '3' and op3 == '3':
-                        ConFornecedores.delete()
+                        ViewFornecedores.delete()
                     elif op2 == '0' or op3 == '0':
                         break
                     else:
@@ -51,11 +54,11 @@ class Controller:
                                 '3- Remover\n'
                                 '0- Voltar\n')
                     if op2 == '1':
-                        ConVendas.add()
+                        ViewVendas.add()
                     elif op2 == '2':
-                        ConVendas.alter()
+                        ViewVendas.alter()
                     elif op2 == '3':
-                        ConVendas.delete()
+                        ViewVendas.delete()
                     elif op2 == '0':
                         continue
                     else:
@@ -68,11 +71,11 @@ class Controller:
                                 '3- Remover\n'
                                 '0- Voltar\n')
                     if op2 == '1':
-                        ConClientes.add()
+                        ViewClientes.add()
                     elif op2 == '2':
-                        ConClientes.alter()
+                        ViewClientes.alter()
                     elif op2 == '3':
-                        ConClientes.delete()
+                        ViewClientes.delete()
                     elif op2 == '0':
                         continue
                 else:
@@ -85,11 +88,11 @@ class Controller:
                                 '3- Remover\n'
                                 '0- Voltar\n')
                     if op2 == '1':
-                        ConFuncionarios.add()
+                        ViewFuncionarios.add()
                     elif op2 == '2':
-                        ConFuncionarios.alter()
+                        ViewFuncionarios.alter()
                     elif op2 == '3':
-                        ConFuncionarios.delete()
+                        ViewFuncionarios.delete()
                     elif op2 == '0':
                         continue
                     else:
@@ -103,13 +106,13 @@ class Controller:
                                 '4- Relatório de clientes que mais compram\n'
                                 '0- Voltar')
                     if op2 == '1':
-                        ConRelatorios.geral()
+                        ViewRelatorios.geral()
                     elif op2 == '2':
-                        ConRelatorios.data()
+                        ViewRelatorios.data()
                     elif op2 == '3':
-                        ConRelatorios.maisVendidos()
+                        ViewRelatorios.maisVendidos()
                     elif op2 == '4':
-                        ConRelatorios.clientes()
+                        ViewRelatorios.clientes()
                     elif op == '0':
                         continue
                     else:
@@ -123,4 +126,3 @@ class Controller:
 
         except:
             print('Digite um numero inteiro que represente a opção desejada')
-

@@ -1,5 +1,6 @@
-from CONswitch import *
+from controllers.CONswitch import *
 
+op = 0
 while(op != '0'):
     op = int(input('Escolha uma opção de uso do sistema:\n'
           '1- Produtos\n'
