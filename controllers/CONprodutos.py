@@ -6,14 +6,17 @@ from views.viewProdutos import *
 
 class ConProdutos:
     @classmethod
-    def add(cls):
-        categorias = DaoCategoria.read()
+    def add(cls, produto:Produto):
         while True:
             try:
+                cat = DaoCategoria.read()
+                if type(cat) != 'list':
+                    print('Antes de cadastrar um produto, é preciso cadastrar uma categoria')
+                    break
+                prod = ViewProdutos.add(cat)
                 produtos = DaoProdutos.read()
-                id = len(produtos)
-                request = ViewProdutos.add(id, categorias)
-                DaoProdutos.save(request)
+                produto.prodId = len(produtos)
+                DaoProdutos.save(produto)
                 print('Produto salvo no ID:', id)
                 break
             except:

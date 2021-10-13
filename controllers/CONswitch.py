@@ -1,49 +1,63 @@
-from controllers.CONprodutos import *
 from views.viewProdutos import *
-from controllers.CONvendas import *
-from controllers.CONpessoas import *
+from DAOs.DAOprodutos import *
+from controllers.CONprodutos import *
+from models.produtos import *
+from views.viewCategorias import *
+from DAOs.DAOcategoria import *
 from controllers.CONcategorias import *
-from controllers.CONfornecedores import *
-from controllers.CONrelatorios import *
+from models.categoria import *
+from views.viewFornecedores import *
+from views.viewClientes import *
+from views.viewFuncionarios import *
+from views.viewVendas import *
+from views.Main import *
 
-class Controller:
-    @classmethod
-    def switch(cls, opcao):
-        try:
-            op = int(opcao)
+def switch():
+    try:
+        op = 0
+        while (op != '0'):
+            op = int(input('Escolha uma opção de uso do sistema:\n'
+                           '1- Produtos\n'
+                           '2- Vendas\n'
+                           '3- Gerenciamento de clientes\n'
+                           '4- Gerenciamento de funcionários\n'
+                           '5- Relatórios\n'
+                           '0- Sair\n'))
             op2 = 500
             if op == 1:
                 while op2 != 0:
-                    op2 = input('1- Produtos\n'
+                    op2 = int(input('1- Produtos\n'
                                 '2- Categorias\n'
                                 '3- Fornecedores\n'
-                                '0- Voltar\n')
-
-                    op3 = input('1- Cadastrar\n'
+                                '0- Voltar\n'))
+                    op3 = int(input('1- Cadastrar\n'
                                 '2- Alterar\n'
                                 '3- Remover\n'
-                                '0- Voltar\n')
-
-                    if op2 == '1' and op3 == '1':
-                        ViewProdutos.add()
-                    elif op2 == '1' and op3 == '2':
-                        ViewProdutos.alter()
-                    elif op2 == '1' and op3 == '3':
-                        ViewProdutos.delete()
-                    elif op2 == '2' and op3 == '1':
-                        ViewCategorias.add()
-                    elif op2 == '2' and op3 == '2':
-                        ViewCategorias.alter()
-                    elif op2 == '2' and op3 == '3':
-                        ViewCategorias.delete()
-                    elif op2 == '3' and op3 == '1':
+                                '0- Voltar\n'))
+                    if op2 == 1 and op3 == 1:
+                        ConProdutos.add()
+                    elif op2 == 1 and op3 == 2:
+                        ConProdutos.alter()
+                    elif op2 == 1 and op3 == 3:
+                        ConProdutos.delete()
+                    elif op2 == 2 and op3 == 1:
+                        ConCategorias.add()
+                    elif op2 == 2 and op3 == 2:
+                        ConCategorias.alter()
+                    elif op2 == 2 and op3 == 3:
+                       ConCategorias.delete()
+                    elif op2 == 3 and op3 == 1:
                         ViewFornecedores.add()
+
                     elif op2 == '3' and op3 == '2':
                         ViewFornecedores.alter()
+
                     elif op2 == '3' and op3 == '3':
                         ViewFornecedores.delete()
+
                     elif op2 == '0' or op3 == '0':
-                        break
+                        continue
+
                     else:
                         print('Opção inválida\n')
 
@@ -78,8 +92,8 @@ class Controller:
                         ViewClientes.delete()
                     elif op2 == '0':
                         continue
-                else:
-                    print('Opção inválida!\n')
+                    else:
+                        print('Opção inválida!\n')
 
             elif op == 4:
                 while op2 != '0':
@@ -117,12 +131,11 @@ class Controller:
                         continue
                     else:
                         print('Opção inválida!\n')
-
             elif op == 0:
-                print('Até logo')
-
+                break
             else:
                 print('Opção inválida! Por favor tente novamente\n')
+    except:
+        print('Digite um numero inteiro que represente a opção desejada')
 
-        except:
-            print('Digite um numero inteiro que represente a opção desejada')
+switch()

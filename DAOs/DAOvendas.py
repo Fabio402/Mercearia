@@ -3,15 +3,18 @@ from models.vendas import *
 class DaoVendas:
     @classmethod
     def save(cls, venda: Vendas):
-        with open('data/vendas.txt','a') as file:
-            if venda.ativo == True:
-                venda.ativo = '1'
-            else:
-                venda.ativo = '0'
-            file.writelines(str(venda.vendasId) +'|'+ str(venda.vendedor) +'|'+ str(venda.cliente) +'|')
-            file.writelines(str(venda.itensId))
-            file.writelines('|'+ str(venda.precoTotal) +'|'+ str(venda.desconto) +'|'+ str(venda.precoFinal) +'|'+ str(venda.ativo)+'\n')
-
+        if os.path.isdir('data/vendas.txt'):
+            with open('data/vendas.txt','a') as file:
+                if venda.ativo == True:
+                    venda.ativo = '1'
+                else:
+                    venda.ativo = '0'
+                file.writelines(str(venda.vendasId) +'|'+ str(venda.vendedor) +'|'+ str(venda.cliente) +'|')
+                file.writelines(str(venda.itensId))
+                file.writelines('|'+ str(venda.precoTotal) +'|'+ str(venda.desconto) +'|'+ str(venda.precoFinal) +'|'+ str(venda.ativo)+'\n')
+        else:
+            os.makedirs('data')
+            Daovendas.save(venda)
     @classmethod
     def read(cls):
         with open('data/vendas.txt', 'r') as file:

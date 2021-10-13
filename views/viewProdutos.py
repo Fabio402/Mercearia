@@ -1,7 +1,7 @@
 from models.produtos import *
 class ViewProdutos:
     @classmethod
-    def add(cls,id,categorias):
+    def add(cls,categorias):
         print('Preencha as seguintes informações.\n')
         nome = input('Nome:')
         qtd = input('Quantidade em estoque:')
@@ -10,7 +10,7 @@ class ViewProdutos:
         for categoria in categorias:
             print(categoria.serial+'-', categoria.nome+'\n')
         cat = input('Informe o numero que representa a categoria:')
-        return Produto(nome,id,qtd,precoVenda,precoCusto,cat)
+        return Produto(nome,qtd,precoVenda,precoCusto,cat)
 
     @classmethod
     def delete(cls):
@@ -18,7 +18,7 @@ class ViewProdutos:
 
     @classmethod
     def getId(cls):
-        return input('Digite o código do produto que deseja editar:')
+        return input('Digite o código do produto:')
 
     @classmethod
     def alter(cls, produto: Produto, categorias):

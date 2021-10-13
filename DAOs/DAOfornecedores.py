@@ -1,14 +1,19 @@
 from models.fornecedores import *
+import os
+
 class DaoFornecedores:
     @classmethod
     def save(cls, fornecedor: Fornecedores):
-        with open('data/fornecedores.txt','a') as file:
-            if fornecedor.ativo == True:
-                fornecedor.ativo = '1'
-            else:
-                fornecedor.ativo = '0'
-            file.writelines(str(fornecedor.id) +'|'+ fornecedor.nome +'|'+ fornecedor.cnpj +'|'+ fornecedor.categoria +'|'+ fornecedor.tel +'|'+ fornecedor.ativo +'\n')
-
+        if os.path.isdir('data/fornecedores.txt'):
+            with open('data/fornecedores.txt','a') as file:
+                if fornecedor.ativo == True:
+                    fornecedor.ativo = '1'
+                else:
+                    fornecedor.ativo = '0'
+                file.writelines(str(fornecedor.id) +'|'+ fornecedor.nome +'|'+ fornecedor.cnpj +'|'+ fornecedor.categoria +'|'+ fornecedor.tel +'|'+ fornecedor.ativo +'\n')
+        else:
+            os.makedirs('data')
+            DaoFornecedores.save(fornecedor)
     @classmethod
     def read(cls):
         with open('data/fornecedores.txt', 'r') as file:

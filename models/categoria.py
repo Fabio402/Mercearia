@@ -2,7 +2,7 @@ class Categoria:
     def __init__(self, nome, serial, *ativo):
         self.nome = nome
         self.serial = serial
-        if len(ativo) == 0:
+        if ativo == True:
             self.ativo = True
         else:
             if ativo[0] == '1':
