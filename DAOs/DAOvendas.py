@@ -4,7 +4,7 @@ class DaoVendas:
     @classmethod
     def save(cls, venda: Vendas):
         if os.path.isdir('data/vendas.txt'):
-            with open('data/vendas.txt','a') as file:
+            with open('data/vendas.txt', 'a') as file:
                 if venda.ativo == True:
                     venda.ativo = '1'
                 else:

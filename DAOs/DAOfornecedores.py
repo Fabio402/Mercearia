@@ -5,7 +5,7 @@ class DaoFornecedores:
     @classmethod
     def save(cls, fornecedor: Fornecedores):
         if os.path.isdir('data/fornecedores.txt'):
-            with open('data/fornecedores.txt','a') as file:
+            with open('data/fornecedores.txt', 'a') as file:
                 if fornecedor.ativo == True:
                     fornecedor.ativo = '1'
                 else:

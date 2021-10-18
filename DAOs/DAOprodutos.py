@@ -4,7 +4,7 @@ class DaoProdutos:
     @classmethod
     def save(cls, produto: Produto):
         if os.path.isdir('data/produtos'):
-            with open('data/produtos.txt','a') as file:
+            with open('data/produtos.txt', 'a') as file:
                 if produto.ativo == True:
                     produto.ativo = '1'
                 else:

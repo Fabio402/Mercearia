@@ -70,7 +70,7 @@ class DaoCliente:
 
     @classmethod
     def read(cls):
-        with open('data/clientes.txt','r') as file:
+        with open('data/clientes.txt', 'r') as file:
             aux = file.readlines()
             aux = list(map(lambda data: data.replace('\n',''), aux))
             aux = list(map(lambda data: data.split('|'), aux))

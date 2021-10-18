@@ -1,0 +1,5 @@
+0|Frutas|1
+1|Verduras|1
+2|teste|0
+3|Legumes|1
+4|Carnes|1
