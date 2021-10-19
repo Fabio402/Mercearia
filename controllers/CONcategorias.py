@@ -27,3 +27,12 @@ class ConCategorias:
         except Exception as e:
             print(e)
             return 105
+
+    @classmethod
+    def delete(cls, id, cat: Categoria):
+        try:
+            DaoCategoria.alter(id, cat)
+            return "Categoria excluida!"
+        except Exception as e:
+            print(e)
+            return 105
