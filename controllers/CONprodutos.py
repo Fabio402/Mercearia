@@ -14,7 +14,6 @@ class ConProdutos:
                 return 'Produto salvo!'
             except Exception as e:
                 print(e)
-
     @classmethod
     def list(cls):
         try:
@@ -27,10 +26,15 @@ class ConProdutos:
     def alter(cls, id, produto: Produto):
         try:
             DaoProdutos.alter(id, produto)
-            return "Categoria alterada!"
+            return "Produto alterado!"
         except Exception as e:
             print(e)
             return 105
     @classmethod
-    def delete(cls):
-        print('delete')
+    def delete(cls, id, produto: Produto):
+            try:
+                DaoProdutos.alter(id, produto)
+                return "Produto deletado!"
+            except Exception as e:
+                print(e)
+                return 105

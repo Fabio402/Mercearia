@@ -1,5 +1,5 @@
 from models.produtos import *
-import os
+
 class DaoProdutos:
     @classmethod
     def save(cls, produto: Produto):
@@ -24,8 +24,7 @@ class DaoProdutos:
     @classmethod
     def alter(cls, alterId, alteracao: Produto):
         produtos = DaoProdutos.read()
-        produto = list(filter(lambda data: data.prodId == alterId, produtos))
-        prod = list(map(lambda data: alteracao if (data.prodId == alterId) else (data), produtos))
+        prod = list(map(lambda data:alteracao if (data.prodId == alterId) else (data), produtos))
         with open('../DAOs/data/produtos.txt', 'w') as file:
             for i in prod:
                 if i.ativo == True:

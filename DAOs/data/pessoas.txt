@@ -1,0 +1,7 @@
+0|0|0|0|0|0|0
+1|Jao|cpf|rg|tel|cel|email
+2|Fabio|123|123|123|123|123
+3|Paty|123|123|123|123|123
+4|Nilce|123|123|123|123|123
+5|Antonio|123|123|123|123|123
+6|Nome|cpf|rg|tel|cel|email

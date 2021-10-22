@@ -7,15 +7,6 @@ class Pessoa:
         self.telefone = telefone
         self.celular = celular
         self.email = email
-        
-class Endereco:
-    def __init__(self, id, rua, numero, bairro, cidade, uf):
-        self.pessoaId = id
-        self.rua = rua
-        self.num = numero
-        self.bairro = bairro
-        self.cidade = cidade
-        self.uf = uf
 
 class Cliente(Pessoa):
     def __init__(self, cliId, pessoaId, nome, cpf, rg, telefone, celular, email, *ativo):

@@ -23,7 +23,7 @@ class ViewProdutos:
         for produto in produtos:
             if produto.ativo == True:
                 print(f'{produto.prodId} - {produto.nome}')
-        id = input('Insira o numero do produto que deseja alterar: ')
+        id = int(input('Insira o numero do produto que deseja alterar: '))
         produto: Produto
         for prod in produtos:
             if prod.prodId == id:
@@ -59,4 +59,20 @@ class ViewProdutos:
 
     @classmethod
     def delete(cls):
-        return input('Tem certeza que deseja excluir este produto?(S/N)').lower()
+        produtos = ConProdutos.list()
+        print('Estes são os produtos existentes:\n')
+        for prod in produtos:
+            if prod.ativo == True:
+                print(f"{prod.prodId}- {prod.nome}.")
+        id = int(input('Insira o numero do produto que deseja excluir ou 0(zero) para sair?'))
+        if id != 0 and id > 0 and id <= len(produtos):
+            produto: Produto
+            for prod in produtos:
+                if prod.prodId == id:
+                    produto = Produto(prod.nome, prod.prodId, prod.qtd, prod.venda, prod.custo, prod.categoria, '1')
+                    break
+            res = input(f'Tem certeza que deseja excluir o produto?(S/N)').lower()
+            if res == 's':
+                produto.ativo = False
+            aux = ConProdutos.delete(id, produto)
+            print(aux)

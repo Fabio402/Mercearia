@@ -24,7 +24,6 @@ class DaoCategoria:
     @classmethod
     def alter(cls, alterId, alteracao: Categoria):
         categorias = DaoCategoria.read()
-        categoria = list(filter(lambda data: data.serial == alterId, categorias))
         cat = list(map(lambda data: alteracao if (data.serial == alterId) else (data), categorias))
         with open('../DAOs/data/categorias.txt', 'w') as file:
             for i in cat:
