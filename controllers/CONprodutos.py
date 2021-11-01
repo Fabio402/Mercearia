@@ -20,8 +20,7 @@ class ConProdutos:
             produtos = DaoProdutos.read()
             return produtos
         except Exception as e:
-            print(e)
-            return 104
+            return e
     @classmethod
     def alter(cls, id, produto: Produto):
         try:
@@ -29,7 +28,6 @@ class ConProdutos:
             return "Produto alterado!"
         except Exception as e:
             print(e)
-            return 105
     @classmethod
     def delete(cls, id, produto: Produto):
             try:
@@ -37,4 +35,3 @@ class ConProdutos:
                 return "Produto deletado!"
             except Exception as e:
                 print(e)
-                return 105

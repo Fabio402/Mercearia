@@ -1,3 +1,4 @@
 0|root|0
 1|Frutas|1
 2|Legumes|1
+3|Carne|1

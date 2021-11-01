@@ -13,7 +13,7 @@ class ViewCategorias:
             if cat.ativo == True:
                 print(f"{cat.serial}- {cat.nome}.")
         id = int(input('Insira o numero da categoria deseja editar ou 0(zero) para sair?'))
-        if id != 0 and id > 0 and id <= len(categorias):
+        if id > 0 and id <= len(categorias):
             categoria = Categoria('a',id,'1')
             for cat in categorias:
                 if cat.serial == id:
